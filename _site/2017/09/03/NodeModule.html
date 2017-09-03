@@ -1,0 +1,50 @@
+<h2 id="node模块化详细讲解">Node模块化详细讲解</h2>
+
+<blockquote>
+  <p>前言</p>
+
+  <blockquote>
+    <p>Nodejs是服务端的javascript，它的模块化遵循CommonJs规范，CommonJs规范的主要内容有</p>
+
+    <ul>
+      <li>定义全局函数require，通过传入模块标识来引入其他模块，执行的结果即为别的模块暴漏出来的API</li>
+      <li>如果被require函数引入的模块中也包含依赖，那么依次加载这些依赖</li>
+      <li>如果引入模块失败，那么require函数应该报一个异常</li>
+      <li>模块通过变量exports来向往暴漏API，exports只能是一个对象，暴漏的API须作为此对象的属性。</li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<h3 id="初级">初级</h3>
+
+<ul>
+  <li>使用module.exports或exports来创建模块</li>
+  <li>使用require(path)来引入模块</li>
+</ul>
+
+<p>​</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//mathutil.js，使用exports</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">add</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">sub</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="o">-</span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//index.js</span>
+<span class="kd">var</span> <span class="nx">mathutil</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">'./mathutil'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mathutil</span><span class="p">.</span><span class="nx">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mathutil</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>这里我们通过给exports添加add和sub属性，向外暴露了求和和求差的方法</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//mathutil.js，使用module.exports</span>
+
+</code></pre>
+</div>
+
