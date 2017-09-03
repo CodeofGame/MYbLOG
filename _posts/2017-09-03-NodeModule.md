@@ -42,7 +42,6 @@ console.log(mathutil.add(1,2));
 
 ```javascript
 //mathutil.js，使用module.exports
-
 ```
 
 {% highlight ruby %}
@@ -53,5 +52,5 @@ print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
 
-
+![img](http://s2.51cto.com/wyfs02/M01/8F/2F/wKiom1jWV_nxCCmtAADKPBn8ZNs759.jpg)
 
